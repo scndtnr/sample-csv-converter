@@ -1,0 +1,4 @@
+customer_id,master_a_due_day,transaction_b_send_days,transaction_c_promise_days
+c001,27,"4,5","11,19"
+c002,27,"6,7","13,21"
+c003,27,"8,9,10","15,30,31"

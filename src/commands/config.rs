@@ -5,6 +5,7 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Deserialize, Serialize)]
 pub(crate) struct Config {
+    pub(crate) output_directory_name: String,
     pub(crate) reference_date: String,
     pub(crate) target_days: usize,
 }
@@ -12,6 +13,7 @@ pub(crate) struct Config {
 impl Default for Config {
     fn default() -> Self {
         Self {
+            output_directory_name: "output".to_string(),
             reference_date: Local::now().format("%Y-%m-%d").to_string(),
             target_days: 5,
         }
