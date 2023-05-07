@@ -9,8 +9,8 @@ pub(super) use mastar_a::MasterARecords;
 pub(super) use source_record::SourceRecord;
 pub(super) use source_record_dto::SourceRecordDto;
 pub(super) use source_records::SourceRecords;
-pub(super) use transaction_b::TransactionB;
-pub(super) use transaction_c::TransactionC;
+pub(super) use transaction_b::TransactionBRecords;
+pub(super) use transaction_c::TransactionCRecords;
 
 use anyhow::Result;
 use chrono::NaiveDate;
@@ -27,6 +27,8 @@ impl<'a, 'b> FileGenerator<'a, 'b> {
     /// サンプルデータ用CSVをまとめて生成する
     pub(super) fn write_files(&self) -> Result<()> {
         self.write_master_a_csv()?;
+        self.write_transaction_b_csv()?;
+        self.write_transaction_c_csv()?;
         Ok(())
     }
 
@@ -51,6 +53,22 @@ impl<'a, 'b> FileGenerator<'a, 'b> {
         let file_name = "master_a.csv";
         let records =
             MasterARecords::new(self.source_records, self.reference_date, self.current_day);
+        Self::write(&records.0, self.day_dir_path, file_name)
+    }
+
+    /// transaction_b データ用CSVを生成する
+    fn write_transaction_b_csv(&self) -> Result<PathBuf> {
+        let file_name = "transaction_b.csv";
+        let records =
+            TransactionBRecords::new(self.source_records, self.reference_date, self.current_day);
+        Self::write(&records.0, self.day_dir_path, file_name)
+    }
+
+    /// transaction_c データ用CSVを生成する
+    fn write_transaction_c_csv(&self) -> Result<PathBuf> {
+        let file_name = "transaction_c.csv";
+        let records =
+            TransactionCRecords::new(self.source_records, self.reference_date, self.current_day);
         Self::write(&records.0, self.day_dir_path, file_name)
     }
 }

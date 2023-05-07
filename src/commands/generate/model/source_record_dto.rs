@@ -1,5 +1,3 @@
-use chrono::NaiveDate;
-
 use super::SourceRecord;
 
 /// 入力CSVの生データ（レコード）
