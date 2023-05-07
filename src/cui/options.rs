@@ -32,8 +32,6 @@ pub(super) enum Commands {
 pub(super) struct GenerateArgs {
     #[clap(help = "入力として扱うCSVのpathを指定する")]
     pub(super) src: String,
-    #[clap(help = "出力されるCSVの配置先ディレクトリのpathを指定する")]
+    #[clap(help = "CSV出力先ディレクトリのpathを指定する")]
     pub(super) dst: String,
-    #[clap(short, long, help = "仮実行フラグ")]
-    pub(super) dry_run: bool,
 }

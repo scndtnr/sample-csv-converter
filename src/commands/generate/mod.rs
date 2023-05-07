@@ -5,7 +5,7 @@ use crate::commands::{config::load_config, convert_to_path};
 use anyhow::Result;
 use std::path::{Path, PathBuf};
 
-pub(crate) fn generate_csv(src: String, dst: String, dry_run: bool) -> Result<()> {
+pub(crate) fn generate_csv(src: String, dst: String) -> Result<()> {
     let cfg = load_config();
     let src_path = convert_to_path(&src);
     let output_dir_path = convert_to_path(&dst).join(&cfg.output_directory_name);

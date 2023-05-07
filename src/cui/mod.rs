@@ -19,7 +19,7 @@ impl Cui {
         match self.opts.command().clone() {
             Commands::Generate(args) => {
                 println!("{:#?}", args);
-                crate::commands::generate_csv(args.src, args.dst, args.dry_run)
+                crate::commands::generate_csv(args.src, args.dst)
                     .expect("Fail to generate csv files.");
             }
             Commands::Config => crate::commands::print_config(),
